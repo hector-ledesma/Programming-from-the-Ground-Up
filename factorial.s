@@ -10,6 +10,8 @@
 
 .globl _start
 .globl factorial    # Why do we store the function label globally?
+                    # Ah, according to the book, this is unneeded unless we want to share the
+                    #   function with other programs. Good to know
 
 _start:
 pushl $4            # First item on the stack will be our value whose exponent we're calculating.
