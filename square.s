@@ -1,7 +1,7 @@
 .section .data
 .section .text
 
-.gobl _start
+.globl _start
 _start:
 pushl $5     # This'll be our argument
 call square
