@@ -26,21 +26,10 @@ movl $3, %edi   # Set our index to 2
 
 # Move list address into ebx?
 movl 8(%ebp), %ebx
-# Make symbol point at address
-# arg1:
-# 8(%ebp)
-
-# And then try to offset the address?
-# LETS GOOOOOOOOOOOOOOOOOOOOOOOOOO
-# Hardcoding the offset won t work for our purposes
-#   what if I make a label point at that address and then use the indexingmode
-# nope
-# movl 8(%ebx), %eax
-# movl arg1(,%edi,4), %eax
 
 
 # Ok so the way the godbolt compiler handles dynamically indexing is:
-#   1. Store index on a register so we may use the register for different type of accessing mode.
+#   1. Store index on a register so we may use the register for different types of accessing modes.
 #   2. Use said register to calculate the offset, and store the result on another register.
 #   3. Store the start address of our array onto its own register.
 #   4. Add our offset to our array address to access the data at that offset.
@@ -55,9 +44,7 @@ imull $4, %edi  # Multiply the size of our data, by our index and store it at in
 addl %edi, %ebx # Add it to our array variable address?
 
 movl (%ebx), %eax # Move what would currently be at index 0 after offset to be returned
-
 #    LETS GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO ^
-
 
 # Standard function ending
 movl %ebp, %esp
